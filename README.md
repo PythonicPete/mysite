@@ -18,7 +18,7 @@ A modern, full-stack portfolio website built with **Django (Python)**. This proj
 
 1.  **Clone the repository**
     ```bash
-    git clone [https://github.com/YourUsername/YourRepoName.git](https://github.com/YourUsername/YourRepoName.git)
+    git clone [https://github.com/PythonicPete/myfirst_site.git](https://github.com/PythonicPete/myfirst_site.git)
     cd YourRepoName
     ```
 
