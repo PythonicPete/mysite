@@ -18,8 +18,8 @@ A modern, full-stack portfolio website built with **Django (Python)**. This proj
 
 1.  **Clone the repository**
     ```bash
-    git clone [https://github.com/PythonicPete/myfirst_site.git](https://github.com/PythonicPete/myfirst_site.git)
-    cd YourRepoName
+    git clone [https://github.com/PythonicPete/mysite.git](https://github.com/PythonicPete/mysite.git)
+    cd mysite
     ```
 
 2.  **Install Django** (if not installed)
