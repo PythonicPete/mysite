@@ -37,19 +37,41 @@ def registerout(request):
 
 def handlesignup(request):
     if request.method == "POST":
-        usernamesignup =request.POST.get("usernamesignup","").strip()
-        emailsignup =request.POST.get("emailsignup")
-        passwordsignup =request.POST.get("passwordsignup","").strip()
-        password2signup =request.POST.get("password2signup","").strip()
+        # 1. Check if we are even receiving data
+        print("--- DEBUG: FORM WAS SUBMITTED ---")
+        
+        usernamesignup = request.POST.get("usernamesignup")
+        emailsignup = request.POST.get("emailsignup")
+        passwordsignup = request.POST.get("passwordsignup")
+        password2signup = request.POST.get("password2signup")
+        
+        # 2. Print the actual data we got
+        print(f"Username received: {usernamesignup}")
+        print(f"Email received: {emailsignup}")
+        print(f"Password 1: {passwordsignup}")
+        print(f"Password 2: {password2signup}")
 
-        if passwordsignup == password2signup:
-            user = User.objects.create_user(usernamesignup,emailsignup,passwordsignup)
-            user.save()
+        # Check for None (This is the most common error)
+        if usernamesignup is None:
+            print("ERROR: Username is None! Check HTML input name.")
+            return redirect('signup')
+
+        if passwordsignup != password2signup:
+            print("ERROR: Passwords do not match")
+            messages.info(request,"PASSWORDS DO NOT MATCH")
+            return redirect('signup')
+            
+        # If we get here, create the user
+        try:
+            myuser = User.objects.create_user(usernamesignup, emailsignup, passwordsignup)
+            myuser.save()
+            print("SUCCESS: User created and saved!")
             messages.success(request,"Signup SUCCESSFULLY!")
             return redirect('/')
-        else:
-            messages.info(request,"USER ALREADY EXIST TRY SOMETHING UNIQUE! ")
-            return redirect('/')
+        except Exception as e:
+            print(f"CRITICAL ERROR SAVING USER: {e}")
+            return redirect('signup')
+
     else:
         return render(request, 'signup.html')
 

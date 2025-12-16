@@ -19,7 +19,7 @@
 		<h1>Creative SignUp Form</h1>
 		<div class="main-agileinfo">
 			<div class="agileits-top">
-				<form action="/" method="post">
+				<form action="/signup" method="post">
 					{% csrf_token %}
 					
 					<input class="text" type="text" name="usernamesignup" placeholder="Username" required="">
@@ -36,7 +36,7 @@
 					<input type="submit" value="SIGNUP" >
 					
 				</form>
-				<p>Don't have an Account? <a href="#"> Login Now!</a></p>
+				<p>Don't have an Account? <a href="register"> Login Now!</a></p>
 			</div>
 		</div>
 		<!-- copyright -->
